@@ -3,4 +3,5 @@ class Train < ActiveRecord::Base
   belongs_to :company
   belongs_to :origin, :class_name => 'Station', :foreign_key => 'origin_id'
   belongs_to :destination, :class_name => 'Station', :foreign_key => 'destination_id'
+  has_many :travels, :dependent => :destroy
 end
