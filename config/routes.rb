@@ -1,4 +1,7 @@
 Timetable::Application.routes.draw do
+  resources :stations
+
+
   resources :companies
 
 
