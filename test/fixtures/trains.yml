@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  company_id: 1
+  rank: MyString
+  name: MyString
+  number: MyString
+  date: 2014-02-22
+  clockwise: false
+  origin_id: 1
+  destination_id: MyString
+
+two:
+  company_id: 1
+  rank: MyString
+  name: MyString
+  number: MyString
+  date: 2014-02-22
+  clockwise: false
+  origin_id: 1
+  destination_id: MyString
