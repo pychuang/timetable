@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Company:</b>
+  <%= @train.company_id %>
+</p>
+
+<p>
+  <b>Rank:</b>
+  <%= @train.rank %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @train.name %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%= @train.number %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @train.date %>
+</p>
+
+<p>
+  <b>Clockwise:</b>
+  <%= @train.clockwise %>
+</p>
+
+<p>
+  <b>Origin:</b>
+  <%= @train.origin_id %>
+</p>
+
+<p>
+  <b>Destination:</b>
+  <%= @train.destination_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_train_path(@train) %> |
+<%= link_to 'Back', trains_path %>

@@ -1,0 +1,37 @@
+<h1>Listing trains</h1>
+
+<table>
+  <tr>
+    <th>Company</th>
+    <th>Rank</th>
+    <th>Name</th>
+    <th>Number</th>
+    <th>Date</th>
+    <th>Clockwise</th>
+    <th>Origin</th>
+    <th>Destination</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @trains.each do |train| %>
+  <tr>
+    <td><%= train.company_id %></td>
+    <td><%= train.rank %></td>
+    <td><%= train.name %></td>
+    <td><%= train.number %></td>
+    <td><%= train.date %></td>
+    <td><%= train.clockwise %></td>
+    <td><%= train.origin_id %></td>
+    <td><%= train.destination_id %></td>
+    <td><%= link_to 'Show', train %></td>
+    <td><%= link_to 'Edit', edit_train_path(train) %></td>
+    <td><%= link_to 'Destroy', train, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Train', new_train_path %>
