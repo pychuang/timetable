@@ -1,4 +1,10 @@
 Timetable::Application.routes.draw do
+  get "top/index"
+
+  get "top/search_station"
+
+  get "top/search_train"
+
   resources :travels
 
 
