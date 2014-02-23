@@ -1,45 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Company:</b>
-  <%= @train.company.name %>
-</p>
-
-<p>
-  <b>Rank:</b>
-  <%= @train.rank %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @train.name %>
-</p>
-
-<p>
-  <b>Number:</b>
-  <%= @train.number %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @train.date %>
-</p>
-
-<p>
-  <b>Clockwise:</b>
-  <%= @train.clockwise %>
-</p>
-
-<p>
-  <b>Origin:</b>
-  <%= @train.origin.name %>
-</p>
-
-<p>
-  <b>Destination:</b>
-  <%= @train.destination.name %>
-</p>
-
-<table>
-  <%= render(@train.travels) %>
+<table border="1" width="50%">
+  <tr>
+    <th width="10%">列車名</th>
+    <td><%= @train.company.name %> <%= @train.name %></td>
+  </tr>
+  <tr>
+    <th>車次</th>
+    <td><%= @train.number %></td>
+  </tr>
+  <tr>
+    <th>車站</th>
+    <th>時刻</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <%= link_to @train.travels.first.depart_from.name, @train.travels.first.depart_from %>
+    </td>
+    <td align="center">
+      <br />
+<% @train.travels.each do |travel| %>
+      <%= travel.depart_at.strftime('%H:%M') %> 發
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <%= link_to travel.arrive_to.name, travel.arrive_to %>
+    </td>
+    <td align="center">
+      <%= travel.arrive_at.strftime('%H:%M') %> 到<br />
+<% end %>
+      <br />
+    </td>
+  </tr>
 </table>
