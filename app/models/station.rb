@@ -5,4 +5,8 @@ class Station < ActiveRecord::Base
   has_many :destines, :class_name => 'Train', :foreign_key => 'destination_id'
   has_many :arrivals, :class_name => 'Travel', :foreign_key => 'arrive_to_id'
   has_many :departures, :class_name => 'Travel', :foreign_key => 'depart_from_id'
+
+  def full_name
+    "#{company.name} #{name}"
+  end
 end
