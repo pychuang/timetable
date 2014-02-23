@@ -1,2 +1,8 @@
-<h1>Top#search_station</h1>
-<p>Find me in app/views/top/search_station.html.erb</p>
+<h2>車站時刻表查詢</h2>
+<% if @stations.empty? %>
+  <p>找不到名字裡面有 "<%= params[:station] %>" 的車站</p>
+<% else %>
+  <% @stations.each do |station| %>
+    <p><%= link_to station.full_name, station %></p>
+  <% end %>
+<% end %>

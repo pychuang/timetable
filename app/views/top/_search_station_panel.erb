@@ -1,0 +1,12 @@
+<%= form_tag 'top/search_station' do %>
+<fieldset>
+  <legend>車站時刻表查詢</legend>
+  <div>
+    <label for="station">站名</label>
+    <%= text_field_tag :station %>
+  </div>
+  <div>
+    <%= submit_tag '搜尋' %>
+  </div>
+</fieldset>
+<% end %>
