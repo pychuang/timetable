@@ -1,0 +1,51 @@
+<table border="1" width="100%">
+  <tr>
+    <th width="5%">時</th>
+    <th><%= title %></th>
+  </tr>
+
+<% hour = travels.first.depart_at.strftime('%k').to_i %>
+  <tr>
+    <td align="center"><%= hour.to_s %></td>
+    <td>
+      <table>
+        <tr>
+          <td align="center">
+<% travels.each do |travel| %>
+  <% hr = travel.depart_at.strftime('%k').to_i %>
+  <% while hour < hr %>
+    <% hour += 1 %>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <%= hour.to_s %>
+    </td>
+    <td>
+      <table>
+        <tr>
+          <td align="center">
+    <% if hour < hr %>
+            <font></font><br />
+            <br />
+    <% end %>
+          </td>
+  <% end %>
+          <td align="center">
+  <% if travel.train.rank == 'express' %>
+            <font color="red"><%= travel.train.destination.name %>[<%= travel.train.name[0] %>]</font><br />
+  <% elsif travel.train.rank == 'rapid' %>
+            <font color="blue"><%= travel.train.destination.name %>[快]</font><br />
+  <% else %>
+            <font color="black"><%= travel.train.destination.name %></font><br />
+  <% end %>
+            <%= link_to travel.depart_at.strftime('%M'), travel.train %>
+          </td>
+<% end %>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

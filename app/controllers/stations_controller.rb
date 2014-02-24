@@ -13,7 +13,16 @@ class StationsController < ApplicationController
   # GET /stations/1
   # GET /stations/1.json
   def show
+    beginning = DateTime.current.beginning_of_day
+
     @station = Station.find(params[:id])
+    @clockwise_travels = @station.departures.includes(:train).
+      where(:depart_at => beginning...beginning+1).
+      where('trains.clockwise' => true).order('depart_at')
+
+    @counterclockwise_travels = @station.departures.includes(:train).
+      where(:depart_at => beginning...beginning+1).
+      where('trains.clockwise' => false).order('depart_at')
 
     respond_to do |format|
       format.html # show.html.erb
