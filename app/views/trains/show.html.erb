@@ -2,7 +2,7 @@
 
 <p>
   <b>Company:</b>
-  <%= @train.company_id %>
+  <%= @train.company.name %>
 </p>
 
 <p>
@@ -32,14 +32,14 @@
 
 <p>
   <b>Origin:</b>
-  <%= @train.origin_id %>
+  <%= @train.origin.name %>
 </p>
 
 <p>
   <b>Destination:</b>
-  <%= @train.destination_id %>
+  <%= @train.destination.name %>
 </p>
 
-
-<%= link_to 'Edit', edit_train_path(@train) %> |
-<%= link_to 'Back', trains_path %>
+<table>
+  <%= render(@train.travels) %>
+</table>

@@ -14,18 +14,11 @@
 
 <% @travels.each do |travel| %>
   <tr>
-    <td><%= travel.train_id %></td>
-    <td><%= travel.depart_from_id %></td>
+    <td><%= link_to travel.train.number, travel.train %></td>
+    <td><%= link_to travel.depart_from.name, travel.depart_from %></td>
     <td><%= travel.depart_at %></td>
-    <td><%= travel.arrive_to_id %></td>
+    <td><%= link_to travel.arrive_to.name, travel.arrive_to %></td>
     <td><%= travel.arrive_at %></td>
-    <td><%= link_to 'Show', travel %></td>
-    <td><%= link_to 'Edit', edit_travel_path(travel) %></td>
-    <td><%= link_to 'Destroy', travel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Travel', new_travel_path %>
