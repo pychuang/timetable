@@ -14,6 +14,11 @@ class StationsController < ApplicationController
   # GET /stations/1.json
   def show
     @station = Station.find(params[:id])
+    @clockwise_travels = @station.departures.includes(:train).
+      where('trains.clockwise' => true).order('depart_at')
+
+    @counterclockwise_travels = @station.departures.includes(:train).
+      where('trains.clockwise' => false).order('depart_at')
 
     respond_to do |format|
       format.html # show.html.erb

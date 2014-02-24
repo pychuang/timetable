@@ -1,15 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Company:</b>
-  <%= @station.company.name %>
-</p>
 
-<p>
-  <b>Name:</b>
-  <%= @station.name %>
-</p>
+<h2><%= @station.full_name %></h2>
 
-<table>
-  <%= render @station.departures %>
+<table width="100%">
+  <tr>
+<% if not @clockwise_travels.empty? %>
+    <td valign="top">
+      <%= render 'station_timetable', :travels => @clockwise_travels, :title => '順行' %>
+    </td>
+<% end %>
+
+<% if not @counterclockwise_travels.empty? %>
+    <td valign="top">
+      <%= render 'station_timetable', :travels => @counterclockwise_travels, :title => '逆行' %>
+    </td>
+<% end %>
+  </tr>
 </table>
