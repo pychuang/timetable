@@ -3,6 +3,14 @@
 
 <h2><%= @station.full_name %></h2>
 
+<%= form_tag station_path, :method => :get do %>
+<fieldset>
+  <legend>指定日期</legend>
+  <%= select_date @date_in_question, :use_month_numbers => true %>
+  <%= submit_tag '前往' %>
+</fieldset>
+<% end %>
+
 <table width="100%">
   <tr>
 <% if not @clockwise_travels.empty? %>

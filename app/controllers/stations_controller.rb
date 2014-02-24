@@ -1,4 +1,14 @@
 class StationsController < ApplicationController
+  def update_datetime_of_query
+    if not params[:date].nil?
+      year = params[:date][:year].to_i
+      month = params[:date][:month].to_i
+      day = params[:date][:day].to_i
+
+      set_datetime_of_query(DateTime.new(year, month, day, 0, 0, 0, '+8'))
+    end
+  end
+
   # GET /stations
   # GET /stations.json
   def index
@@ -13,11 +23,18 @@ class StationsController < ApplicationController
   # GET /stations/1
   # GET /stations/1.json
   def show
+    update_datetime_of_query
+    @date_in_question = datetime_of_query.to_date
+
+    beginning = datetime_of_query.beginning_of_day
+
     @station = Station.find(params[:id])
     @clockwise_travels = @station.departures.includes(:train).
+      where(:depart_at => beginning...beginning+1).
       where('trains.clockwise' => true).order('depart_at')
 
     @counterclockwise_travels = @station.departures.includes(:train).
+      where(:depart_at => beginning...beginning+1).
       where('trains.clockwise' => false).order('depart_at')
 
     respond_to do |format|
