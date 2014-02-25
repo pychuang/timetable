@@ -3,7 +3,8 @@ Timetable::Application.routes.draw do
 
   post "top/search_station"
 
-  get "top/search_train"
+  post "top/search_train"
+  post "top/search_train2"
 
   resources :travels
 

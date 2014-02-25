@@ -1,2 +1,38 @@
-<h1>Top#search_train</h1>
-<p>Find me in app/views/top/search_train.html.erb</p>
+<%= form_tag 'search_train2' do %>
+<fieldset>
+  <legend>列車查詢</legend>
+  <div>
+    <label for="datetime">日期時間</label>
+    <%= select_datetime @datetime, :use_month_numbers => true %>
+    <label for="query_type_depart">出發</label>
+    <%= radio_button_tag :query_type, 'depart', @query_depart %>
+    <label for="query_type_arrive">抵達</label>
+    <%= radio_button_tag :query_type, 'arrive', @query_arrive %>
+  </div>
+  <div>
+    <label for="superexpress">高鐵</label>
+    <%= check_box_tag :superexpress, true, @superexpress %>
+    <label for="express">特快</label>
+    <%= check_box_tag :express, true, @express %>
+  </div>
+  <div>
+    <table width="20%">
+      <tr>
+        <th><label for="from_station">出發車站</label></th>
+        <th><label for="to_station">目的車站</label></th>
+      </tr>
+      <tr>
+        <td align="center">
+          <%= select_tag :from_station, options_from_collection_for_select(@from_stations, :id, :full_name), :size => 5 %>
+        </td>
+        <td align="center">
+          <%= select_tag :to_station, options_from_collection_for_select(@to_stations, :id, :full_name), :size => 5 %>
+        </td>
+      </tr>
+    <table>
+  </div>
+  <div>
+    <%= submit_tag '搜尋' %>
+  </div>
+</fieldset>
+<% end %>

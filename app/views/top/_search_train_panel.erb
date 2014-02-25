@@ -1,0 +1,30 @@
+<%= form_tag 'top/search_train' do %>
+<fieldset>
+  <legend>列車查詢</legend>
+  <div>
+    <label for="from_station">出發車站</label>
+    <%= text_field_tag :from_station %>
+  </div>
+  <div>
+    <label for="to_station">目的車站</label>
+    <%= text_field_tag :to_station %>
+  </div>
+  <div>
+    <label for="datetime">日期時間</label>
+    <%= select_datetime @datetime, :use_month_numbers => true %>
+    <label for="query_type_depart">出發</label>
+    <%= radio_button_tag :query_type, 'depart', true %>
+    <label for="query_type_arrive">抵達</label>
+    <%= radio_button_tag :query_type, 'arrive' %>
+  </div>
+  <div>
+    <label for="superexpress">高鐵</label>
+    <%= check_box_tag :superexpress, true, true %>
+    <label for="express">特快</label>
+    <%= check_box_tag :express, true, true %>
+  </div>
+  <div>
+    <%= submit_tag '搜尋' %>
+  </div>
+</fieldset>
+<% end %>
