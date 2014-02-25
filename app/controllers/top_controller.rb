@@ -8,5 +8,19 @@ class TopController < ApplicationController
   end
 
   def search_train
+    name = params[:from_station]
+    @from_stations = Station.where('name LIKE :m', :m => "%#{name}%")
+
+    name = params[:to_station]
+    @to_stations = Station.where('name LIKE :m', :m => "%#{name}%")
+
+    year = params[:date][:year].to_i
+    month = params[:date][:month].to_i
+    day = params[:date][:day].to_i
+    hour = params[:date][:hour].to_i
+    min = params[:date][:minute].to_i
+
+    @datetime = DateTime.new(year, month, day, hour, min, 0, '+8')
+    set_datetime_of_query(@datetime)
   end
 end
