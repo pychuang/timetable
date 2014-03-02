@@ -24,7 +24,7 @@
   </div>
   <div>
     <label for="datetime">日期時間</label>
-    <%= select_datetime Time.current, :use_month_numbers => true %>
+    <%= select_datetime @datetime, :use_month_numbers => true %>
     <label for="query_type_depart">出發</label>
     <%= radio_button_tag :query_type, 'depart', true %>
     <label for="query_type_arrive">抵達</label>

@@ -1,5 +1,6 @@
 class TopController < ApplicationController
   def index
+    @datetime = datetime_of_query
   end
 
   def search_station
@@ -22,5 +23,10 @@ class TopController < ApplicationController
 
     @datetime = DateTime.new(year, month, day, hour, min, 0, '+8')
     set_datetime_of_query(@datetime)
+
+    @query_depart = params[:query_type] == 'depart'
+    @query_arrive = params[:query_type] == 'arrive'
+    @superexpress = params[:superexpress] == 'true'
+    @express = params[:express] == 'true'
   end
 end

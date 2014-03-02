@@ -3,17 +3,17 @@
   <legend>列車查詢</legend>
   <div>
     <label for="datetime">日期時間</label>
-    <%= select_datetime Time.current, :use_month_numbers => true %>
+    <%= select_datetime @datetime, :use_month_numbers => true %>
     <label for="query_type_depart">出發</label>
-    <%= radio_button_tag :query_type, 'depart', true %>
+    <%= radio_button_tag :query_type, 'depart', @query_depart %>
     <label for="query_type_arrive">抵達</label>
-    <%= radio_button_tag :query_type, 'arrive' %>
+    <%= radio_button_tag :query_type, 'arrive', @query_arrive %>
   </div>
   <div>
     <label for="superexpress">高鐵</label>
-    <%= check_box_tag :superexpress, true, true %>
+    <%= check_box_tag :superexpress, true, @superexpress %>
     <label for="express">特快</label>
-    <%= check_box_tag :express, true, true %>
+    <%= check_box_tag :express, true, @express %>
   </div>
   <div>
     <table width="20%">
