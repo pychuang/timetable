@@ -11,15 +11,8 @@
 
 <% @stations.each do |station| %>
   <tr>
-    <td><%= station.company_id %></td>
-    <td><%= station.name %></td>
-    <td><%= link_to 'Show', station %></td>
-    <td><%= link_to 'Edit', edit_station_path(station) %></td>
-    <td><%= link_to 'Destroy', station, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to station.company.name, station.company %></td>
+    <td><%= link_to station.name, station %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Station', new_station_path %>
