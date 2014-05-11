@@ -17,21 +17,14 @@
 
 <% @trains.each do |train| %>
   <tr>
-    <td><%= train.company_id %></td>
+    <td><%= link_to train.company.name, train.company %></td>
     <td><%= train.rank %></td>
     <td><%= train.name %></td>
-    <td><%= train.number %></td>
+    <td><%= link_to train.number, train %></td>
     <td><%= train.date %></td>
     <td><%= train.clockwise %></td>
-    <td><%= train.origin_id %></td>
-    <td><%= train.destination_id %></td>
-    <td><%= link_to 'Show', train %></td>
-    <td><%= link_to 'Edit', edit_train_path(train) %></td>
-    <td><%= link_to 'Destroy', train, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to train.origin.name, train.origin %></td>
+    <td><%= link_to train.destination.name, train.destination %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Train', new_train_path %>
