@@ -3,6 +3,8 @@
 
 <h2><%= @station.full_name %></h2>
 
+<%= render 'date_selection' %>
+
 <table width="100%">
   <tr>
 <% if not @clockwise_travels.empty? %>
