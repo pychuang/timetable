@@ -9,4 +9,8 @@ class Station < ActiveRecord::Base
   def self.search(name)
     Station.where('name LIKE :m', :m => "%#{name}%")
   end
+
+  def full_name
+    "#{company.name} #{name}"
+  end
 end
